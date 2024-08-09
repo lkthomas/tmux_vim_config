@@ -1,4 +1,4 @@
-" vim-plug configuration
+" Plugin configuration
 call plug#begin('~/.vim/bundle/')
 
 " Plugin list
@@ -42,7 +42,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " General settings
 set is hlsearch ai ic scs
 nnoremap <esc><esc> :nohls<cr>
-autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * if &filetype != 'markdown' | %s/\s\+$//e | endif
 
 " Indentation settings
 set tabstop=8
@@ -105,7 +105,6 @@ endfunction
 " Set the status line
 set statusline=%F\ %m\ %r\ %h\ %w\ [%{GitBranch()}]\ %y\ %=\ %l,%c\ %P
 inoremap <c-b> <Esc>:Lex<cr>:vertical resize 30<cr>
-
 
 " Enable automatic preview on cursor move
 " let g:loaded_netrwPlugin = 1
